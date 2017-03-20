@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            font-size: 12px;
+            font-family: tahoma, arial, sans-serif;
+            background: #F0F0F0;
+        }
+        
+        div,
+        img,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+        }
+        
+        img {
+            display: block;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        a:link {
+            text-decoration: none;
+            color: #07519A;
+        }
+        
+        a:visited {
+            text-decoration: none;
+            color: #07519A;
+        }
+        
+        a:active,
+        a:hover {
+            text-decoration: underline;
+            color: #07519A;
+        }
+        
+        p {
+            margin: 0;
+        }
+        
+        .calendar {
+            display: block;
+        }
+        
+        .calendar .calendar-title-box {
+            position: relative;
+            width: 100%;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .calendar .prev-month {
+            position: absolute;
+            top: 12px;
+            left: 0px;
+            display: inline-block;
+            width: 0px;
+            height: 0px;
+            border-left: 0px;
+            border-top: 6px solid transparent;
+            border-right: 8px solid #999;
+            border-bottom: 6px solid transparent;
+            cursor: pointer;
+        }
+        
+        .calendar .next-month {
+            position: absolute;
+            top: 12px;
+            right: 0px;
+            display: inline-block;
+            width: 0px;
+            height: 0px;
+            border-right: 0px;
+            border-top: 6px solid transparent;
+            border-left: 8px solid #999;
+            border-bottom: 6px solid transparent;
+            cursor: pointer;
+        }
+        
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        
+        .calendar-table tr {
+            height: 30px;
+            line-height: 30px;
+        }
+        
+        .currentDay {
+            color: #ff5500;
+        }
+        
+        .currentMonth {
+            color: #999;
+        }
+        
+        .otherMonth {
+            color: #d9d9d9;
+        }
+        
+        .calendar-header {
+            position: relative;
+        }
+        
+        .calendar-header img {
+            width: 100%;
+        }
+        
+        .calendar-header .title {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 21px;
+            color: #ff5500;
+        }
+        
+        .calendar-header .singin {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 21px;
+            color: #b3b3b3;
+        }
+        
+        .calendar-header .description {
+            position: absolute;
+            bottom: 17px;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            font-size: 12px;
+        }
+        
+        .calendar-body {
+            margin-top: 10px;
+            background: #fff;
+        }
+        
+        .calendar-body .icon img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .calendar-body .title {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .calendar-body .title .date {
+            display: flex;
+            padding: 15px 0;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        
+        .calendar-body .title .date .day {
+            margin-left: 10px;
+            font-size: 15px;
+        }
+        
+        .calendar-body .title .continuity-singin {
+            padding-top: 15px;
+            font-size: 15px;
+        }
+        
+        .calendar-table td img {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            right: 13px;
+            bottom: 3px;
+        }
+        
+        .calendar-body-box {
+            padding: 13px 15px 18px;
+        }
+        
+        td {
+            position: relative;
+            font-size: 14px;
+            color: #808080;
+        }
+        
+        th {
+            font-size: 16px;
+            color: #4d4d4d;
+        }
+        
+        .role {
+            margin: 10px 0 0 0;
+            padding: 15px;
+            background: #fff;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calendar-header">
+        <img src="./img/sign_bg.png">
+        <!--<div class="title">签到</div>-->
+        <p class="singin">已签到</p>
+        <p class="description">今日签到可领5银豆，快去签到吧！</p>
+    </div>
+
+    <div class="calendar-body">
+        <div class="title">
+
+            <div class="date">
+                <div class="icon"><img src="./img/calendar.png" alt=""></div>
+                <div class="day">2017-3-14</div>
+            </div>
+
+            <div class="continuity-singin">您已连续签到5天</div>
+        </div>
+        <div class='calendar' id='calendar'></div>
+    </div>
+
+    <div class="role">
+        <h2 style="margin: 0;
+    padding-bottom: .14rem;
+    text-align: center;
+    font-size: .15rem;
+    color: #333;">签到规则</h2>
+            <p>1、每天签到可得2积分，连续签到至第7天得10积分； </p>
+            <p>2、第八天起，签到天数归零，系统重新开始累加。</p>
+            <p>步骤：</p>
+            <p>1、打开九机网微信公众号，输入“会员绑定”</p>
+            <p>2、点击回复内容，输入或注册您的九机网会员账号</p>
+    </div>
+
+    <script>
+        (function () {
+            /*
+             * 用于记录日期，显示的时候，根据dateObj中的日期的年月显示
+             */
+            var dateObj = (function () {
+                var _date = new Date();    // 默认为当前系统时间
+                return {
+                    getDate: function () {
+                        return _date;
+                    },
+                    setDate: function (date) {
+                        _date = date;
+                    }
+                };
+            })();
+
+            // 设置calendar div中的html部分
+            renderHtml();
+            // 表格中显示日期
+            showCalendarData();
+            // 绑定事件
+            bindEvent();
+
+            /**
+             * 渲染html结构
+             */
+            function renderHtml() {
+                var calendar = document.getElementById("calendar");
+                var titleBox = document.createElement("div");  // 标题盒子 设置上一月 下一月 标题
+                var bodyBox = document.createElement("div");  // 表格区 显示数据
+
+                // 设置标题盒子中的html
+                titleBox.className = 'calendar-title-box';
+                titleBox.innerHTML = "<span class='prev-month' id='prevMonth'></span>" +
+                    "<span class='calendar-title' id='calendarTitle'></span>" +
+                    "<span id='nextMonth' class='next-month'></span>";
+                calendar.appendChild(titleBox);    // 添加到calendar div中
+                titleBox.style.display = 'none';
+
+                // 设置表格区的html结构
+                bodyBox.className = 'calendar-body-box';
+                var _headHtml = "<tr>" +
+                    "<th>日</th>" +
+                    "<th>一</th>" +
+                    "<th>二</th>" +
+                    "<th>三</th>" +
+                    "<th>四</th>" +
+                    "<th>五</th>" +
+                    "<th>六</th>" +
+                    "</tr>";
+                var _bodyHtml = "";
+
+                // 一个月最多31天，所以一个月最多占6行表格
+                for (var i = 0; i < 6; i++) {
+                    _bodyHtml += "<tr>" +
+                        "<td><span></span><img class='icon' src='./img/calendar_Check.png'/></td>" +
+                        "<td><span></span><img class='icon' src='./img/calendar_Check.png'/></td>" +
+                        "<td><span></span><img class='icon' src='./img/calendar_Check.png'/></td>" +
+                        "<td><span></span><img class='icon' src='./img/calendar_Check.png'/></td>" +
+                        "<td><span></span><img class='icon' src='./img/calendar_Check.png'/></td>" +
+                        "<td><span></span><img class='icon' src='./img/calendar_Check.png'/></td>" +
+                        "<td><span></span><img class='icon' src='./img/calendar_Check.png'/></td>" +
+                        "</tr>";
+                }
+                bodyBox.innerHTML = "<table id='calendarTable' class='calendar-table'>" +
+                    _headHtml + _bodyHtml +
+                    "</table>";
+                // 添加到calendar div中
+                calendar.appendChild(bodyBox);
+            }
+
+            /**
+             * 表格中显示数据，并设置类名
+             */
+            function showCalendarData() {
+                var _year = dateObj.getDate().getFullYear();
+                var _month = dateObj.getDate().getMonth() + 1;
+                var _dateStr = getDateStr(dateObj.getDate());
+
+                // 设置顶部标题栏中的 年、月信息
+                var calendarTitle = document.getElementById("calendarTitle");
+                var titleStr = _dateStr.substr(0, 4) + "年" + _dateStr.substr(4, 2) + "月";
+                calendarTitle.innerText = titleStr;
+
+                // 设置表格中的日期数据
+                var _table = document.getElementById("calendarTable");
+                var _tds = _table.getElementsByTagName("span");
+                var _firstDay = new Date(_year, _month - 1, 1);  // 当前月第一天
+                for (var i = 0; i < _tds.length; i++) {
+                    var _thisDay = new Date(_year, _month - 1, i + 1 - _firstDay.getDay());
+                    var _thisDayStr = getDateStr(_thisDay);
+                    _tds[i].innerText = _thisDay.getDate();
+                    //_tds[i].data = _thisDayStr;
+                    _tds[i].setAttribute('data', _thisDayStr);
+                    if (_thisDayStr == getDateStr(new Date())) {    // 当前天
+                        _tds[i].className = 'currentDay';
+                    } else if (_thisDayStr.substr(0, 6) == getDateStr(_firstDay).substr(0, 6)) {
+                        _tds[i].className = 'currentMonth';  // 当前月
+                    } else {    // 其他月
+                        _tds[i].className = 'otherMonth';
+                    }
+                }
+            }
+
+            /**
+             * 绑定上个月下个月事件
+             */
+            function bindEvent() {
+                var prevMonth = document.getElementById("prevMonth");
+                var nextMonth = document.getElementById("nextMonth");
+                addEvent(prevMonth, 'click', toPrevMonth);
+                addEvent(nextMonth, 'click', toNextMonth);
+            }
+
+            /**
+             * 绑定事件
+             */
+            function addEvent(dom, eType, func) {
+                if (dom.addEventListener) {  // DOM 2.0
+                    dom.addEventListener(eType, function (e) {
+                        func(e);
+                    });
+                } else if (dom.attachEvent) {  // IE5+
+                    dom.attachEvent('on' + eType, function (e) {
+                        func(e);
+                    });
+                } else {  // DOM 0
+                    dom['on' + eType] = function (e) {
+                        func(e);
+                    }
+                }
+            }
+
+            /**
+             * 点击上个月图标触发
+             */
+            function toPrevMonth() {
+                var date = dateObj.getDate();
+                dateObj.setDate(new Date(date.getFullYear(), date.getMonth() - 1, 1));
+                showCalendarData();
+            }
+
+            /**
+             * 点击下个月图标触发
+             */
+            function toNextMonth() {
+                var date = dateObj.getDate();
+                dateObj.setDate(new Date(date.getFullYear(), date.getMonth() + 1, 1));
+                showCalendarData();
+            }
+
+            /**
+             * 日期转化为字符串， 4位年+2位月+2位日
+             */
+            function getDateStr(date) {
+                var _year = date.getFullYear();
+                var _month = date.getMonth() + 1;    // 月从0开始计数
+                var _d = date.getDate();
+
+                _month = (_month > 9) ? ("" + _month) : ("0" + _month);
+                _d = (_d > 9) ? ("" + _d) : ("0" + _d);
+                return _year + _month + _d;
+            }
+        })();
+    </script>
+</body>
+
+</html>
