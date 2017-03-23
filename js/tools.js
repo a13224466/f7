@@ -1,4 +1,3 @@
-
 var JindouTools = {
     _layer: function (ele) {
 
@@ -27,6 +26,13 @@ var JindouTools = {
             }
         });
     },
+    setlstorage: function (key, value) {
+        localStorage.setItem(key, value);
+    },
+    getlstorage: function (obj) {
+        return localStorage.getItem(obj);
+    },
+
 
 
 

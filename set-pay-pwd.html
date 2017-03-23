@@ -1,0 +1,147 @@
+<div class="pages">
+    <div data-page="set-pay-pwd" class="page set-pay-pwd">
+        <div class="page-content">
+
+            <style>
+                .clearfix:after {
+                    clear: both;
+                }
+                
+                .clearfix:before,
+                .clearfix:after {
+                    content: " ";
+                    display: table;
+                }
+                
+                .alieditContainer {
+                    position: relative;
+                    padding: 0 .15rem;
+                }
+                
+                .sixDigitPassword {
+                    position: absolute;
+                    left: -1.22rem;
+                    top: 0;
+                    width: 100%;
+                    height: .5rem;
+                    color: #fff;
+                    font-size: .12rem;
+                    -webkit-box-sizing: content-box;
+                    box-sizing: content-box;
+                    -webkit-user-select: initial;
+                    outline: 'none';
+                    z-index: 999;
+                    opacity: 0;
+                    filter: alpha(opacity=0);
+                }
+                
+                .sixDigitPassword-box {
+                    cursor: text;
+                    background: #fff;
+                    outline: none;
+                    position: relative;
+                    height: .48rem;
+                    border: .01rem solid #cccccc;
+                    border-radius: .02rem;
+                }
+                
+                .sixDigitPassword-box i {
+                    display: flex;
+                    align-items: center;
+                    float: left;
+                    width: .56rem;
+                    height: .5rem;
+                    border-left: .01rem solid #cccccc;
+                }
+                
+                .sixDigitPassword-box i:first-child {
+                    border-left: 0;
+                }
+                
+                .sixDigitPassword-box .active {
+                    background: url('./img/password-blink.gif') no-repeat center center;
+                }
+                
+                .sixDigitPassword-box b {
+                    display: block;
+                    margin: 0 auto;
+                    width: .07rem;
+                    height: .07rem;
+                    overflow: hidden;
+                    visibility: hidden;
+                    background: url('./img/passeord-dot.png') no-repeat;
+                }
+                
+                .sixDigitPassword-box span {
+                    position: absolute;
+                    display: block;
+                    left: 0;
+                    top: 0;
+                    height: .3rem;
+                    border-radius: .02rem;
+                    visibility: hidden;
+                }
+                
+                .ui-securitycore .ui-form-item .ui-form-explain {
+                    margin-top: .08rem;
+                }
+                
+                .i-block {
+                    display: inline-block;
+                    width: 100%;
+                }
+                
+                .six-password {
+                    position: relative;
+                    height: .5rem;
+                    width: 100%;
+                    overflow: hidden;
+                    vertical-align: middle;
+                }
+            </style>
+
+            <div class="self-top-navbar">
+                <div class="left">
+                    <a href="#" class="back">
+                        <svg class="icon" aria-hidden="true">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#jd-head_back_black"></use>
+                        </svg>
+                    </a>
+                </div>
+                <div class="center">
+                    设置支付密码
+                </div>
+                <div class="right">
+                    <svg class="icon" aria-hidden="true">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#jd-my_Setup"></use>
+                    </svg>
+                </div>
+            </div>
+
+            <span class="pad-lr-15 f15 color-333 tips-text">为保障您的账户安全，请设置6位支付密码</span>
+            <div id="payPassword_container" class="alieditContainer clearfix" data-busy="0">
+                <div class="i-block" data-error="i_error">
+                    <div class="i-block six-password">
+                        <input class="i-text sixDigitPassword" id="payPassword_rsainput" type="password" autocomplete="off" required="required" value=""
+                            name="payPassword_rsainput" data-role="sixDigitPassword" tabindex="" maxlength="6" minlength="6"
+                            aria-required="true">
+                            <div tabindex="0" class="sixDigitPassword-box">
+                                <i><b style="visibility: hidden;"></b></i>
+                                <i><b style="visibility: hidden;"></b></i>
+                                <i><b style="visibility: hidden;"></b></i>
+                                <i><b style="visibility: hidden;"></b></i>
+                                <i><b style="visibility: hidden;"></b></i>
+                                <i><b style="visibility: hidden;"></b></i>
+                                <span style="visibility: hidden;" id="cardwrap" data-role="cardwrap"></span>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="./find-pay-pwd.html">
+                <div class="confirm-next bgc-d2d2d2">下一步</div>
+            </a>
+
+        </div>
+    </div>
+</div>

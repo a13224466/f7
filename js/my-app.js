@@ -16,6 +16,9 @@
     doc.addEventListener('DOMContentLoaded', recalc, false);
 })(document, window);
 
+// require('../css/my-app.css');
+// require('./framework7.min.js')();
+
 var myApp = new Framework7({ // 初始化
     pushState: true,
     cache: false,
@@ -455,10 +458,218 @@ myApp.onPageInit('login', function (page) { //登陆页面
     console.log('login');
 });
 
+myApp.onPageInit('set-pay-pwd', function (page) { //登陆页面
+    console.log('set-pay-pwd');
+
+
+    var payPassword = $("#payPassword_container"),
+        _this = payPassword.find('i'),
+        k = 0, j = 0,
+        password = '',
+        _cardwrap = $('#cardwrap');
+    //点击隐藏的input密码框,在6个显示的密码框的第一个框显示光标
+    payPassword.on('focus', "input[name='payPassword_rsainput']", function () {
+
+        var _this = payPassword.find('i');
+        if (payPassword.attr('data-busy') === '0') {
+            //在第一个密码框中添加光标样式
+            _this.eq(k).addClass("active");
+            _cardwrap.css('visibility', 'visible');
+            payPassword.attr('data-busy', '1');
+        }
+
+    });
+    //change时去除输入框的高亮，用户再次输入密码时需再次点击
+    payPassword.on('change', "input[name='payPassword_rsainput']", function () {
+        _cardwrap.css('visibility', 'hidden');
+        _this.eq(k).removeClass("active");
+        payPassword.attr('data-busy', '0');
+    }).on('blur', "input[name='payPassword_rsainput']", function () {
+        _cardwrap.css('visibility', 'hidden');
+        _this.eq(k).removeClass("active");
+        payPassword.attr('data-busy', '0');
+    });
+
+    //使用keyup事件，绑定键盘上的数字按键和backspace按键
+    payPassword.on('keyup', "input[name='payPassword_rsainput']", function (e) {
+        var e = (e) ? e : window.event;
+        //键盘上的数字键按下才可以输入
+        if (e.keyCode == 8 || (e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) {
+            k = this.value.length;//输入框里面的密码长度
+            l = _this.length;//6
+            for (; l--;) {
+                //输入到第几个密码框，第几个密码框就显示高亮和光标（在输入框内有2个数字密码，第三个密码框要显示高亮和光标，之前的显示黑点后面的显示空白，输入和删除都一样）
+                if (l === k) {
+                    _this.eq(l).addClass("active");
+                    _this.eq(l).find('b').css('visibility', 'hidden');
+                } else {
+                    _this.eq(l).removeClass("active");
+                    _this.eq(l).find('b').css('visibility', l < k ? 'visible' : 'hidden');
+                }
+
+                if (k === 6) {
+                    j = 5;
+                } else {
+                    j = k;
+                }
+                // $('#cardwrap').css('left', j * 30 + 'px');
+            }
+        } else {
+            //输入其他字符，直接清空
+            var _val = this.value;
+            this.value = _val.replace(/\D/g, '');
+        }
+    });
+
+    $('.set-pay-pwd .confirm-next').on('touchstart', function (e) {
+        console.log($('.i-text').val());
+    });
+
+});
+
 myApp.onPageInit('me-bank-card', function (page) { //我的银行卡
     console.log('me-bank-card');
     mainView.hideToolbar();
+});
 
+myApp.onPageInit('order-details', function (page) { //订单详情
+    console.log('order-details');
+    mainView.hideToolbar();
+});
+
+myApp.onPageInit('refund-details', function (page) { //退款详情
+    console.log('refund-details');
+
+    $('.refund-details .confirm-next').on('touchstart', function (e) {
+        myApp.modal({
+            title: '',
+            // text: '<div style="display: flex; align-items: center; height: .3rem;">\
+            //            <div style="width: .75rem; font-size: .14rem; color: #666;">退货物流：</div>\
+            //                 <select name="" style="appearance: none;-moz-appearance: none; -webkit-appearance: none; background: url(../img/screening_drop.png) no-repeat scroll right center transparent; background-position-x: 1.3rem; background-size: .1rem .1rem; padding: 0 .14rem; width: 1.5rem; height: .3rem;" border: 0;>\
+            //                     <option value="0">1</option>\
+            //                     <option value="1">2</option>\
+            //                     <option value="2">3</option>\
+            //                     <option value="3">4</option>\
+            //                     <option value="4">5</option>\
+            //                 </select>\
+            //        </div>\
+            //        <div style="display: flex; align-items: center; margin-top: .05rem; height: .3rem;">\
+            //            <div style="width: .75rem; font-size: .14rem; color: #666;">物流单号：</div>\
+            //             <input style="width: 1.44rem; height: .25rem;" type="number" name="" value="" placeholder="" border: 0;>\
+            //        </div>',
+            text: '<div style="display: flex; align-items: center; width:100%; height: .3rem; line-height: .3rem; justify-content: flex-start;">\
+                       <div style="width: 40%; font-size: .14rem; color: #666; text-align: left;">退货物流：</div>\
+                        <div class="nice-select" name="nice-select">\
+                            <input type="text" style="-webkit-appearance: none; width: 100%; border-radius: 0;" name="" value="EMS" placeholder="" border: 0; readonly>\
+                            <ul>\
+                                <li data-value="1">顺丰快递</li>\
+                                <li data-value="2">中通快递</li>\
+                                <li data-value="3">韵达快递</li>\
+                                <li data-value="4">圆通快递</li>\
+                            </ul>\
+                        </div>\
+                   </div>\
+                   <div style="display: flex; width:100%; align-items: center; margin-top: .05rem; height: .3rem; line-height: .3rem;">\
+                       <div style="width: 40%; font-size: .14rem; color: #666; text-align: left;">物流单号：</div>\
+                       <div class="nice-select sha" name="nice-select">\
+                           <input style="-webkit-appearance: none; width: 100%; height: .25rem; border: 0; outline: 0; background: none; border-radius: 0;" type="number" name="" value="" placeholder="">\
+                       </div>\
+                   </div>',
+            verticalButtons: true,
+            buttons: [
+                {
+                    text: '确认',
+                    onClick: function () {
+                        console.log('queren');
+                    }
+                }
+            ]
+        })
+
+        $('[name="nice-select"]').click(function (e) {
+            // $("body").find('.modal.modal-in').css({
+            //     'overflow-y': '',
+            // });
+            $(this).closest('.modal').eq(0).css({
+                "overflow": 'initial',
+            });
+            $('[name="nice-select"]').find('ul').hide();
+            $(this).find('ul').show();
+            e.stopPropagation();
+        });
+
+
+        $('[name="nice-select"] li').click(function (e) {
+            var val = $(this).text();
+            $(this).parents('[name="nice-select"]').find('input').val(val);
+            $('[name="nice-select"] ul').hide();
+            e.stopPropagation();
+        });
+
+        $(document).click(function () {
+            $('[name="nice-select"] ul').hide();
+        });
+
+    });
+    // mainView.hideToolbar();
+});
+
+myApp.onPageInit('me-all-order', function (page) { //我的全部订单
+    console.log('me-all-order');
+    $(document).ready(function () {
+        setTimeout(function () {
+            $('.me-all-order .buttons-row a').eq(JindouTools.getlstorage('me-all-order-tab')).click();
+        }, 100); // 默认打开标签页
+
+        $('.me-all-order .buttons-row a').each(function (i, e) { // 记住标签页状态
+            $(e).on('click', function () {
+                $('.me-all-order .buttons-row a').removeClass('active');
+                $(e).addClass('active');
+                $('.me-all-order .tabs .tab').hide();
+                $('.me-all-order .tabs .tab').eq(i).show();
+
+                JindouTools.setlstorage('me-all-order-tab', $(e).data('tab'));
+            });
+        });
+
+        $('.me-all-order #tab4 .confirm-receipt').each(function (i, e) {
+            var order_number = '12345566778';
+            $(e).on('touchstart', function (e) {
+                myApp.modal({
+                    title: '确认收货',
+                    text: '订单' + order_number + '确认收货',
+                    buttons: [{
+                        text: '取消',
+                        onClick: function () {
+                            console.log('取消');
+                        }
+                    }, {
+                        text: '确认',
+                        onClick: function () {
+                            mainView.router.loadPage('confirm-get-success.html');
+                        }
+                    }]
+                });
+            });
+        });
+
+    });
+
+});
+
+$$(document).on('touchstart', '.me-bank-card2 .back', function (page) { //我的银行卡
+    console.log('me-bank-card2');
+    $('.toolbar.row.index').fadeOut("slow");
+});
+
+$$(document).on('touchstart', '.me-bank-card .back', function (page) { //我的银行卡
+    console.log('me-bank-card1');
+    $('.toolbar.row.index').fadeIn("slow");
+});
+
+$$(document).on('touchstart', '.me-add-card .back', function (page) { //我的银行卡
+    console.log('me-add-card');
+    $('.toolbar.row.index').fadeOut("slow");
 });
 
 console.log(myApp.device.os);
