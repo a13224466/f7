@@ -35,6 +35,11 @@ $$(document).on('pageAfterBack', function (e) { // 默认每个页面都显示�
     mainView.showToolbar();
 })
 
+$(document).on(function (e) { // 默认每个页面都显示底栏
+    mainView.showToolbar();
+})
+
+
 
 var mainView = myApp.addView('.view-main', {// 主view
     dynamicNavbar: true,
@@ -451,16 +456,93 @@ myApp.onPageInit('sing-in', function (page) {//签到页面
         }
     })();
 
-    // eval(function (p, a, c, k, e, r) { e = function (c) { return (c < 62 ? '' : e(parseInt(c / 62))) + ((c = c % 62) > 35 ? String.fromCharCode(c + 29) : c.toString(36)) }; if ('0'.replace(0, e) == 0) { while (c--) r[e(c)] = k[c]; k = [function (e) { return r[e] || e }]; e = function () { return '([3578a-df-hj-zA-Z]|1\\w)' }; c = 1 }; while (c--) if (k[c]) p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c]); return p }('(8(){3 c=(8(){3 D=j k();E{d:8(){E D},F:8(a){D=a}}})();P();r();Q();8 P(){3 f=g.n(\'#f\'),o=g.R(\'S\'),G=g.R(\'S\');o.s=\'f-T-box\';o.U="<l t=\'prev-V\' u=\'v\'></l><l t=\'f-T\' u=\'w\'></l><l u=\'x\' t=\'next-V\'></l>";f.W(o);o.style=\'display: none;\';3 X="<y><7>日</7><7>一</7><7>二</7><7>三</7><7>四</7><7>五</7><7>六</7></y>";3 H="";Y(3 i=0;i<6;i++){H+="<y><5>1</5><5>1</5><5>1</5><5>1</5><5>1</5><5>1</5><5>1</5></y>"}G.U="<I u=\'Z\' t=\'f-I\'>"+X+H+"</I>";f.W(G)}8 r(){3 p=c.d().z(),b=c.d().A()+1,J=q(c.d());3 w=g.n("#w");3 10=J.B(0,4)+"年"+J.B(4,2)+"月";w.11=10;3 12=g.n("#Z");3 h=12.getElementsByTagName("5");3 K=j k(p,b-1,1);Y(3 i=0;i<h.length;i++){3 L=j k(p,b-1,i+1-K.getDay());3 C=q(L);h[i].11=L.d();h[i].setAttribute(\'data\',C);M(C==q(j k())){h[i].s=\'currentDay\'}13 M(C.B(0,6)==q(K).B(0,6)){h[i].s=\'currentMonth\'}13{h[i].s=\'otherMonth\'}}}8 Q(){3 v=g.n("#v");3 x=g.n("#x");N(v,\'14\',15);N(x,\'14\',16)}8 N(O,17,18){M(O.19){O.19(17,8(e){18(e)})}}8 15(){3 a=c.d();c.F(j k(a.z(),a.A()-1,1));r()}8 16(){3 a=c.d();c.F(j k(a.z(),a.A()+1,1));r()}8 q(a){3 p=a.z(),b=a.A()+1,m=a.d();b=(b>9)?(""+b):("0"+b);m=(m>9)?(""+m):("0"+m);E p+b+m}})();', [], 72, '|||var||td||th|function||date|_month|dateObj|getDate||calendar|document|_tds||new|Date|span|_d|querySelector|titleBox|_year|getDateStr|showCalendarData|className|class|id|prevMonth|calendarTitle|nextMonth|tr|getFullYear|getMonth|substr|_thisDayStr|_date|return|setDate|bodyBox|_bodyHtml|table|_dateStr|_firstDay|_thisDay|if|addEvent|dom|renderHtml|bindEvent|createElement|div|title|innerHTML|month|appendChild|_headHtml|for|calendarTable|titleStr|innerText|_table|else|click|toPrevMonth|toNextMonth|eType|func|addEventListener'.split('|'), 0, {}))
 });
 
 myApp.onPageInit('login', function (page) { //登陆页面
     console.log('login');
 });
 
+myApp.onPageInit('invite-friends', function (page) { //邀请好友
+    console.log('invite-friends');
+    mainView.hideToolbar();
+
+
+    $('.invite-friends .confirm-shared-qrcode').on('touchstart', function (e) {
+        layer.open({
+            style: 'border:none;',
+            content: '<div style="padding: .15rem .15rem;">\
+                          <span style="font-size: .18rem; color: #333;">二维码邀请</span>\
+                          <img src="../img/invitation_erweima.png" style="width: 100%;">\
+                      </div>'
+        })
+    });
+
+    $('.invite-friends .right svg.icon').on('touchstart', function () {
+        layer.open({
+            style: 'border:none;',
+            content: '<div style="position: relative; padding: .15rem;">\
+                          <img src="../img/invitation_window_bg.png" style="width: 100%;">\
+                          <div style="position: absolute; top: .7rem; left:0;  margin: .15rem; height: 2.3rem; overflow-y: scroll;">\
+                            <span style="text-indent: 30px;display: block;text-align: left;">\
+                            1、优惠券使用于在360商城注册的个人用户（以下简称”用户“）为个人消费而发生购买行为时使用，不适用于团体购买、去也顾客购买、批发及其他非以个人消费为目的的购买行为\
+                            </span>\
+                            <span style="text-indent: 30px;display: block;text-align: left;">\
+                            1、优惠券使用于在360商城注册的个人用户（以下简称”用户“）为个人消费而发生购买行为时使用，不适用于团体购买、去也顾客购买、批发及其他非以个人消费为目的的购买行为\
+                            </span>\
+                          </div>\
+                      </div>'
+        })
+    });
+
+    $(".invite-friends .confirm-shared-link").on('touchstart', function () {
+        layer.open({
+            style: 'position: absolute;left: 0;bottom: 0; border: none; width: 100%; border-radius: 0; ',
+            content: '<div class="invite-friends shared_friend_container">\
+                          <div class="wrap">\
+                              <div></div>\
+                              <span class="title">分享到</span>\
+                              <svg class="icon close_shared_friend" aria-hidden="true">\
+                                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#jd-Share_close"></use>\
+                              </svg>\
+                          </div>\
+                          <ul>\
+                            <li>\
+                                <svg style="float: right;" class="icon" aria-hidden="true">\
+                                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#jd-share_qqspace"></use>\
+                                </svg>\
+                                <p>QQ空间</p>\
+                            </li>\
+                            <li>\
+                                <svg style="float: right;" class="icon" aria-hidden="true">\
+                                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#jd-share_weixin"></use>\
+                                </svg>\
+                                <p>微信好友</p></li>\
+                            <li>\
+                                <svg style="float: right;" class="icon" aria-hidden="true">\
+                                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#jd-share_pengyq"></use>\
+                                </svg>\
+                                <p>微信朋友圈</p></li>\
+                            <li>\
+                                <svg style="float: right;" class="icon" aria-hidden="true">\
+                                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#jd-share_weibo"></use>\
+                                </svg>\
+                                <p>新浪微博</p></li>\
+                          </ul>\
+                      </div>',
+        });
+    });
+
+    $(document).on('touchstart', function (e) {
+        if (e.target.className instanceof Object && e.target.className.baseVal == "icon close_shared_friend active-state") {
+            layer.closeAll();
+            mainView.showToolbar();
+        }
+    });
+
+});
+
 myApp.onPageInit('set-pay-pwd', function (page) { //登陆页面
     console.log('set-pay-pwd');
-
 
     var payPassword = $("#payPassword_container"),
         _this = payPassword.find('i'),
@@ -532,10 +614,110 @@ myApp.onPageInit('me-bank-card', function (page) { //我的银行卡
     mainView.hideToolbar();
 });
 
+
+myApp.onPageInit('view-invite-friends', function (page) { //查看我邀请的还有
+    console.log('view-invite-friends');
+    mainView.hideToolbar();
+});
+
+myApp.onPageInit('me-shipping-address', function (page) { //我的收货地址
+    console.log('me-shipping-address');
+    console.log(window.location.href);
+    mainView.hideToolbar();
+});
+
 myApp.onPageInit('order-details', function (page) { //订单详情
     console.log('order-details');
     mainView.hideToolbar();
 });
+
+myApp.onPageInit('me', function (page) { //我的个人中心面板
+    console.log('me');
+    $('.me .shared-silver-bean').on('touchstart', function () {
+        mainView.hideToolbar();
+        layer.open({
+            style: 'position: absolute;left: 0;bottom: 0; border: none; width: 100%; border-radius: 0;    background: #fff;',
+            content: '<div class="me shared_friend_container">\
+                          <div class="wrap">\
+                              <div></div>\
+                              <span class="title">分享到</span>\
+                              <svg class="icon close_shared_friend" aria-hidden="true">\
+                                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#jd-Share_close"></use>\
+                              </svg>\
+                          </div>\
+                          <ul>\
+                            <li class="shared_qqkj">\
+                                <svg style="float: right;" class="icon" aria-hidden="true">\
+                                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#jd-share_qqspace"></use>\
+                                </svg>\
+                                <p>QQ空间</p>\
+                            </li>\
+                            <li class="shared_wxhy">\
+                                <svg style="float: right;" class="icon" aria-hidden="true">\
+                                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#jd-share_weixin"></use>\
+                                </svg>\
+                                <p>微信好友</p></li>\
+                            <li class="shared_wxpyq">\
+                                <svg style="float: right;" class="icon" aria-hidden="true">\
+                                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#jd-share_pengyq"></use>\
+                                </svg>\
+                                <p>微信朋友圈</p></li>\
+                            <li class="shared_xlwb">\
+                                <svg style="float: right;" class="icon" aria-hidden="true">\
+                                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#jd-share_weibo"></use>\
+                                </svg>\
+                                <p>新浪微博</p></li>\
+                          </ul>\
+                      </div>',
+        });
+    });
+
+    $(document).on('touchstart', '.close_shared_friend', function (e) {
+        layer.closeAll();
+        mainView.showToolbar();
+    });
+
+    $(document).on('touchstart', '.shared_qqkj', function (e) {
+        console.log('shared_qqkj');
+        layer.closeAll();
+        mainView.showToolbar();
+        setTimeout(function () {
+            layer.open({
+                style: '',
+                content: '<img src="../img/window_doubg.png" style="display:block; width: 100%;">\
+                          <div style="position: absolute;top: 0;height: 3.3483rem;width: 100%;">\
+                            <span style="font-size: .18rem; color: #fefefe;display: block;margin-top: 1.4rem ">分享成功,</span>\
+                            <span style="display: block;margin-top: .1rem;font-size: .25rem; color: #fff;">奖励<i style="font-style: normal;color: #ffe13e;">10</i>银豆！</span>\
+                            <img src="../img/window_button_clik.png" style="width: 1.85rem;margin-top: .4rem;">\
+                            <span style="font-size: .2rem; color: #c7561e;font-weight: bold;position: absolute;display: block;width: 100%;left: 0;top: 2.47rem;">确定</span>\
+                          </div>'
+            });
+        }, 300);
+    });
+
+    $(document).on('touchstart', '.shared_wxhy', function (e) {
+        console.log('shared_wxhy');
+
+        layer.closeAll();
+        mainView.showToolbar();
+    });
+
+    $(document).on('touchstart', '.shared_wxpyq', function (e) {
+        console.log('shared_wxpyq');
+
+        layer.closeAll();
+        mainView.showToolbar();
+    });
+
+    $(document).on('touchstart', '.shared_xlwb', function (e) {
+        console.log('shared_xlwb');
+
+        layer.closeAll();
+        mainView.showToolbar();
+    });
+
+});
+
 
 myApp.onPageInit('refund-details', function (page) { //退款详情
     console.log('refund-details');
@@ -543,21 +725,7 @@ myApp.onPageInit('refund-details', function (page) { //退款详情
     $('.refund-details .confirm-next').on('touchstart', function (e) {
         myApp.modal({
             title: '',
-            // text: '<div style="display: flex; align-items: center; height: .3rem;">\
-            //            <div style="width: .75rem; font-size: .14rem; color: #666;">退货物流：</div>\
-            //                 <select name="" style="appearance: none;-moz-appearance: none; -webkit-appearance: none; background: url(../img/screening_drop.png) no-repeat scroll right center transparent; background-position-x: 1.3rem; background-size: .1rem .1rem; padding: 0 .14rem; width: 1.5rem; height: .3rem;" border: 0;>\
-            //                     <option value="0">1</option>\
-            //                     <option value="1">2</option>\
-            //                     <option value="2">3</option>\
-            //                     <option value="3">4</option>\
-            //                     <option value="4">5</option>\
-            //                 </select>\
-            //        </div>\
-            //        <div style="display: flex; align-items: center; margin-top: .05rem; height: .3rem;">\
-            //            <div style="width: .75rem; font-size: .14rem; color: #666;">物流单号：</div>\
-            //             <input style="width: 1.44rem; height: .25rem;" type="number" name="" value="" placeholder="" border: 0;>\
-            //        </div>',
-            text: '<div style="display: flex; align-items: center; width:100%; height: .3rem; line-height: .3rem; justify-content: flex-start;">\
+            text: '<div style="display: flex; align-items: center; width:100%; height: .3rem;    background: #fff; line-height: .3rem; justify-content: flex-start;">\
                        <div style="width: 40%; font-size: .14rem; color: #666; text-align: left;">退货物流：</div>\
                         <div class="nice-select" name="nice-select">\
                             <input type="text" style="-webkit-appearance: none; width: 100%; border-radius: 0;" name="" value="EMS" placeholder="" border: 0; readonly>\

@@ -75,7 +75,7 @@ li {
 }
 
 .mar-t-44 {
-    margin-top: .4rem !important;
+    margin-top: .44rem !important;
 }
 
 .mar-r-9 {
@@ -4378,18 +4378,44 @@ li {
     background: #FB4E51;
 }
 
+.me-shipping-address .wrap {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: .5rem;
+    background: #fff;
+    width: 100%;
+}
+
+.me-shipping-address .wrap svg.icon {
+    width: .17rem;
+    height: .17rem;
+}
+
+.me-shipping-address .wrap span {
+    margin-left: .07rem;
+    font-size: .15rem;
+    color: #333;
+}
+
 
 /* 编辑收货地址 */
 
-.me-edit-address .container {
+.me-edit-address .container,
+.me-add-address .container {
     background: #fff;
 }
 
-.me-edit-address .container ul {
+.me-edit-address .container ul,
+.me-add-address .container ul {
     margin-left: .15rem;
 }
 
-.me-edit-address .container li {
+.me-edit-address .container li,
+.me-add-address .container li {
     display: flex;
     height: .5rem;
     align-items: center;
@@ -4398,21 +4424,25 @@ li {
     border-bottom: .01rem solid #eee;
 }
 
-.me-edit-address .container li .key {
+.me-edit-address .container li .key,
+.me-add-address .container li .key {
     width: .56rem;
 }
 
-.me-edit-address .container li .value {
+.me-edit-address .container li .value,
+.me-add-address .container li .value {
     margin-left: .15rem;
 }
 
-.me-edit-address .container li .value input {
+.me-edit-address .container li .value input,
+.me-add-address .container li .value input {
     border: 0;
     outline: 0;
     height: .3rem;
 }
 
-.me-edit-address .container li input[type=checkbox] {
+.me-edit-address .container li input[type=checkbox],
+.me-add-address .container li input[type=checkbox] {
     display: inline-block;
     vertical-align: middle;
     width: .2rem;
@@ -4426,25 +4456,191 @@ li {
     color: #d8d8d8;
 }
 
-.me-edit-address .container li input[type=checkbox]:after {
+.me-edit-address .container li input[type=checkbox]:after,
+.me-add-address .container li input[type=checkbox]:after {
     content: "";
     display: block;
     width: .2rem;
     height: .2rem;
-    border: .02rem solid #ddd;
-    /*text-align: center;
-    line-height: .14rem;
-    font-size: .16rem;
-    color: #fff;
-    
-    background-color: #fff;
-    box-sizing: border-box;*/
     background: url("../img/no_Selected_frame1.png") no-repeat;
+    background-size: .2rem .2rem;
 }
 
-.me-edit-address .container li input[type=checkbox]:checked:after {
+.me-edit-address .container li input[type=checkbox]:checked:after,
+.me-add-address .container li input[type=checkbox]:checked:after {
     background: url("../img/Selected_frame.png") no-repeat;
     background-size: .2rem .2rem;
+}
+
+
+/* 邀请好友 */
+
+.invite-friends .self-top-navbar .right svg.icon {
+    width: .2rem;
+    height: .2rem;
+}
+
+.invite-friends .container .background {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.invite-friends .container .text {
+    height: 1.06rem;
+    line-height: 1.06rem;
+    text-align: center;
+    font-size: .16rem;
+    color: #333;
+}
+
+.invite-friends .container .confirm-shared-link,
+.invite-friends .container .confirm-shared-qrcode,
+.invite-friends .container .confirm-shared-friend {
+    margin: 0 auto .2rem;
+    width: 2.68rem;
+    height: .42rem;
+    line-height: .42rem;
+    text-align: center;
+    border-radius: .5rem;
+    font-size: .17rem;
+    color: #fff;
+    background: #ff5500;
+    box-sizing: border-box;
+    border: .01rem solid #ff5500;
+}
+
+.invite-friends .container .confirm-shared-qrcode,
+.invite-friends .container .confirm-shared-friend {
+    color: #ff5500;
+    border: 1px solid #ff5500;
+    background: #fff;
+}
+
+
+/* 邀请好友分享 */
+
+.shared_friend_container {
+    padding: 0 .15rem .15rem;
+}
+
+.shared_friend_container .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: .55rem;
+    border-bottom: .01rem solid #eee;
+}
+
+.shared_friend_container .wrap .title {
+    font-size: .16rem;
+    color: #333;
+}
+
+.shared_friend_container .wrap svg.icon {
+    padding: .15rem 0;
+    float: right;
+    width: 20px;
+    height: 20px;
+}
+
+.shared_friend_container p {
+    margin: 0;
+}
+
+.shared_friend_container ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: .21rem;
+}
+
+.shared_friend_container ul li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.shared_friend_container ul li svg.icon {
+    width: .5rem;
+    height: .5rem;
+}
+
+
+/* 我的好友 */
+
+.view-invite-friends .container .view-bar {
+    border-top: .01rem solid #ddd;
+    border-bottom: .01rem solid #ddd;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.view-invite-friends .container .view-bar ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.view-invite-friends .container .view-bar li {
+    display: flex;
+    align-items: center;
+    height: .45rem;
+}
+
+.view-invite-friends .container .items {
+    margin-top: .1rem;
+    background: #fff;
+}
+
+.view-invite-friends .container .items ul {
+    margin-left: .15rem;
+}
+
+.view-invite-friends .container .items li {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: .6rem;
+    box-sizing: border-box;
+    border-bottom: .01rem solid #eee;
+}
+
+.view-invite-friends .container .items li .account {
+    margin-left: -.18rem;
+}
+
+.view-invite-friends .container .items li .date {
+    margin-left: -.18rem;
+}
+
+.view-invite-friends .container .items li .level {
+    margin-left: .1rem;
+}
+
+.view-invite-friends .container .items li:last-child {
+    border: 0;
+}
+
+.view-invite-friends .not-detail {
+    display: flex;
+    padding-top: 1rem;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+
+.view-invite-friends img {
+    width: 1rem;
+    height: 1rem;
+    display: block;
+    margin: 0 auto;
+}
+
+.view-invite-friends .not-title {
+    margin: 0;
 }
 
 
