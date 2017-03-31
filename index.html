@@ -3,9 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <!--<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />-->
+  <meta name="format-detection" content="telephone=yes" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
   <meta name="renderer" content="webkit|ie-comp|ie-stand">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -13,13 +11,82 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <title>金豆商城</title>
   <link rel="stylesheet" href="css/framework7.ios.min.css">
-  <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+  <!--<link rel="stylesheet" href="css/framework7.ios.colors.min.css">-->
   <link rel="stylesheet" href="css/layer.css">
   <link rel="stylesheet" href="css/my-app.css">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <!--<link href="css/font-awesome.min.css" rel="stylesheet">-->
+  <script src="./js/loading.js"></script>
+  <script src="./js/global.rem.js"></script>
 </head>
 
 <body>
+  <div class="statusbar-overlay"></div>
+  <div class="panel-overlay"></div>
+  <div class="panel panel-right panel-cover serach-shop-filter">
+    <div class="container">
+      <div class="wrap">
+        <div class="header">
+          <p>女装</p>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#jd-screening_drop"></use>
+          </svg>
+        </div>
+        <ul class="row no-gutter">
+          <li class="col-45">半身裙</li>
+          <li class="col-45">半身裙</li>
+          <li class="col-45">半身裙</li>
+          <li class="col-45">半身裙</li>
+          <li class="col-45">半身裙</li>
+          <li class="col-45">半身裙</li>
+        </ul>
+      </div>
+      <div class="wrap">
+        <div class="header">
+          <p>女装</p>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#jd-screening_drop"></use>
+          </svg>
+        </div>
+        <ul class="row no-gutter">
+          <li class="col-45">半身裙</li>
+          <li class="col-45">半身裙</li>
+          <li class="col-45">半身裙</li>
+          <li class="col-45">半身裙</li>
+          <li class="col-45">半身裙</li>
+          <li class="col-45">半身裙</li>
+        </ul>
+      </div>
+      <div class="wrap">
+        <div class="header">
+          <p>女装</p>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#jd-screening_drop"></use>
+          </svg>
+        </div>
+        <ul class="row no-gutter">
+          <li class="col-45">半身裙</li>
+          <li class="col-45">半身裙</li>
+          <li class="col-45">半身裙</li>
+          <li class="col-45">半身裙</li>
+          <li class="col-45">半身裙</li>
+          <li class="col-45">半身裙</li>
+        </ul>
+      </div>
+      <div class="price-range">
+        <p>价格区间</p>
+        <ul class="row no-gutter">
+          <li class="col-40">
+            <input type="text" placeholder="最低价">
+          </li>
+          <li class="col-20 line text-c"><span></span></li>
+          <li class="col-40">
+            <input type="text" placeholder="最高价">
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="confirm">确定</div>
+  </div>
   <div class="views">
     <div class="view view-main">
       <div class="pages navbar-through toolbar-through">
@@ -64,11 +131,15 @@
 
             <div class="row no-gutter search-div-index">
               <div class="col-90 serach-input">
-                <input type="search" name="search-index" placeholder="搜索商品/店铺" class="search-index">
-                <i class="fa fa-search fa-lg search-icon" aria-hidden="true"></i>
+                <input type="search" name="search-index" placeholder="搜索商品/店铺" class="search-index" readonly>
+                <svg class="icon home_search" aria-hidden="true">
+                  <use xlink:href="#jd-head_search_black"></use>
+                </svg>
               </div>
               <div class="col-10 commit js_commit_index">
-                <i class="fa fa-comment-o fa-lg commit-icon"></i>
+                <svg class="icon home_send" aria-hidden="true">
+                  <use xlink:href="#jd-head_news_black"></use>
+                </svg>
                 <p class="commit-circle"></p>
               </div>
             </div>
@@ -124,9 +195,23 @@
               </div>
               <div class="col-80 header-item-content">
                 <a href="./bean-headlines.html">
-                  <div class="contentone">女生化妆与不化妆，到底是两个世界11111111111111</div>
+                  <div class="contentone">1女生化妆与不化妆，到底是两个世界11111111111111</div>
                 </a>
-                <div class="contenttwo">女生化妆与不化妆，到底是两个世界11111111111111</div>
+                <a href="./bean-headlines.html">
+                  <div class="contenttwo">2女生化妆与不化妆，到底是两个世界11111111111111</div>
+                </a>
+                <a href="./bean-headlines.html">
+                  <div class="contentone">3女生化妆与不化妆，到底是两个世界11111111111111</div>
+                </a>
+                <a href="./bean-headlines.html">
+                  <div class="contenttwo">4女生化妆与不化妆，到底是两个世界11111111111111</div>
+                </a>
+                <a href="./bean-headlines.html">
+                  <div class="contentone">5女生化妆与不化妆，到底是两个世界11111111111111</div>
+                </a>
+                <a href="./bean-headlines.html">
+                  <div class="contenttwo">6女生化妆与不化妆，到底是两个世界11111111111111</div>
+                </a>
               </div>
             </div>
 
@@ -226,9 +311,6 @@
                       <div class="shop-name">罗马耳机</div>
                       <div class="shop-price">￥399</div>
                     </div>
-
-
-
 
                   </div>
 
@@ -365,7 +447,6 @@
                       </div>
                     </div>
                   </div>
-
                   <div class="col-50 content-item">
                     <img src="./img/duobao-index.png" alt="">
                     <p class="description">贝德玛 控油净颜卸妆水 v彩妆师、护肤达人的选择！</p>
@@ -435,13 +516,13 @@
           </svg>
           <p>首页</p>
         </a>
-        <a href="./app-manual.html" class="favorite link  col-25">
+        <a href="./collection.html" class="favorite link  col-25">
           <svg class="icon tab_collection_no" aria-hidden="true">
             <use xlink:href="#jd-tab_collection_no"></use>
           </svg>
           <p>收藏</p>
         </a>
-        <a href="./login.html" class="custom-service link col-25">
+        <a href="./customer-service.html" class="custom-service link col-25">
           <svg class="icon tab_service_no" aria-hidden="true">
             <use xlink:href="#jd-tab_service_no"></use>
           </svg>
@@ -457,13 +538,12 @@
       </div>
     </div>
   </div>
-  <script type="text/javascript" src="js/framework7.min.js"></script>
-  <!--<script src="./dist/bundle.js"></script>-->
-  <!--<script src="./dist/tools.js"></script>-->
-
   <script src="js/jquery.min.js"></script>
   <script src="./fonts/jindou-fonts/iconfont.js"></script>
+  <script type="text/javascript" src="js/framework7.min.js"></script>
   <script type="text/javascript" src="js/tools.js"></script>
+  <!--<script src="./dist/bundle.js"></script>-->
+  <!--<script src="./dist/tools.js"></script>-->
   <script type="text/javascript" src="js/layer.js"></script>
   <script type="text/javascript" src="js/my-app.js"></script>
 

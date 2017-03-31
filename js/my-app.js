@@ -1,21 +1,3 @@
-(function (doc, win) { // 全局rem
-    var docEl = doc.documentElement,
-        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-        recalc = function () {
-            var clientWidth = docEl.clientWidth;
-            if (!clientWidth) return;
-            if (clientWidth >= 640) {
-                docEl.style.fontSize = '100px';
-            } else {
-                docEl.style.fontSize = 100 * (clientWidth / 375) + 'px'; // 以iphone 6为标准计算rem
-            }
-        };
-
-    if (!doc.addEventListener) return;
-    win.addEventListener(resizeEvt, recalc, false);
-    doc.addEventListener('DOMContentLoaded', recalc, false);
-})(document, window);
-
 // require('../css/my-app.css');
 // require('./framework7.min.js')();
 
@@ -38,8 +20,6 @@ $$(document).on('pageAfterBack', function (e) { // 默认每个页面都显示�
 $(document).on(function (e) { // 默认每个页面都显示底栏
     mainView.showToolbar();
 })
-
-
 
 var mainView = myApp.addView('.view-main', {// 主view
     dynamicNavbar: true,
@@ -66,11 +46,9 @@ myApp.onPageInit('index', function (page) { //主page
         slidesOffsetBefore: 15,
     });
 
-    $$(".search-index").on('keydown', function (e) {// 首页查询
-        if (e.keyCode == 13) {
-            console.log('index');
-            mainView.router.loadPage('search-shop.html');
-        }
+    $$(".search-index").on('touchstart', function (e) {// 首页查询
+        console.log('search-index');
+        mainView.router.loadPage('search-main.html');
     });
 
     // 底栏样式切换
@@ -88,14 +66,24 @@ myApp.onPageInit('index', function (page) { //主page
         $this.find('use').attr('xlink:href', icon_attr.replace('no', 'sel'));
     });
 
+    (function () {
+        $.each($('.page-index .header-item .header-item-content'), function (i, e) {
+            var num = 1; // 计数器
+            setInterval(function () {
+                if (num < 3) { // 组数
+                    $(e).animate({ scrollTop: (num * 50) + 'rem' }, 1000);
+                } else {
+                    $(e).animate({ scrollTop: '0' }, 1000);
+                    num = 0;
+                }
+                num++;
+            }, 4000);
+        });
+    })();
+
 });
 
 myApp.onPageInit('profit-give-bean', function (e) {// 盈利送金豆page
-
-    // 以这个为准
-    $(function () {
-        JindouTools._layer($$('.shop-items .shop-item'));
-    });
 
     new Swiper('.swiper-container.give-bean', {//盈利送金豆幻灯片
         preloadImages: false, // 预加载
@@ -138,17 +126,47 @@ myApp.onPageInit('bean-indiana', function (e) {
 
 myApp.onPageInit('search-shop', function (page) { //查询商品
     // 已售完
-
     console.log('search-shop');
-    JindouTools._layer($$('.layer'));
+
+    $(".search-shop .filter").on('touchstart', function () {
+        myApp.openPanel('right');
+    });
+
+
+});
+
+myApp.onPageInit('search-main', function (page) { // 查询主页
+    console.log('search-main');
+    mainView.hideToolbar();
+
+    $('.search-main .wrap-popover').on('touchstart', function () {
+        var clickedLink = this;
+        var popoverHTML = '<div class="popover search-main">' +
+            '<div class="popover-inner">' +
+            '<div class="content-block">' +
+            '<ul>' +
+            '<li>' +
+            '<svg class="icon" aria-hidden="true"><use xlink:href="#jd-Search_drop_goods"></use></svg >' +
+            '<span>商品</span>' +
+            '</li>' +
+            '<li>' +
+            '<svg class="icon" aria-hidden="true"><use xlink:href="#jd-Search_drop_store"></use></svg >' +
+            '<span>店铺</span>' +
+            '</li>' +
+            '</ul>' +
+            '</div>' +
+            '</div>' +
+            '</div>'
+        myApp.popover(popoverHTML, clickedLink);
+    });
 
 });
 
 
 
+
 myApp.onPageInit('shop-details-all', function (page) { //查询商品详情页面
     console.log('shop-details-all');
-    JindouTools._layer($$('.layer'));
 });
 
 myApp.onPageInit('update-nikename', function (page) {
@@ -283,6 +301,26 @@ myApp.onPageInit('shop-details-page', function (page) {
         pagination: '.swiper-pagination', //显示页数
         paginationType: 'fraction', // 数字显示
     })
+
+    $('.shop-details-page .choose-role').on('touchstart', function (e) {
+        if ($$('.picker-modal.modal-in').length > 0) {
+            myApp.closeModal('.picker-modal.modal-in');
+        }
+        myApp.pickerModal(
+            '<div class="picker-modal details-picker">' +
+            '<div class="toolbar">' +
+            '<div class="toolbar-inner">' +
+            '<a href="#" class="close-picker">Close</a>' +
+            '</div>' +
+            '</div>' +
+            '<div class="picker-modal-inner">' +
+
+            '123123123' +
+
+            '</div>' +
+            '</div>'
+        )
+    });
 
     mainView.hideToolbar();
 });
@@ -458,9 +496,9 @@ myApp.onPageInit('sing-in', function (page) {//签到页面
 
 });
 
-myApp.onPageInit('login', function (page) { //登陆页面
-    console.log('login');
-});
+// myApp.onPageInit('login', function (page) { //登陆页面
+//     console.log('login');
+// });
 
 myApp.onPageInit('invite-friends', function (page) { //邀请好友
     console.log('invite-friends');
@@ -496,7 +534,7 @@ myApp.onPageInit('invite-friends', function (page) { //邀请好友
 
     $(".invite-friends .confirm-shared-link").on('touchstart', function () {
         layer.open({
-            style: 'position: absolute;left: 0;bottom: 0; border: none; width: 100%; border-radius: 0; ',
+            style: 'position: absolute;left: 0;bottom: 0; border: none; width: 100%; border-radius: 0; background: #fff;',
             content: '<div class="invite-friends shared_friend_container">\
                           <div class="wrap">\
                               <div></div>\
@@ -629,6 +667,35 @@ myApp.onPageInit('me-shipping-address', function (page) { //我的收货地址
 myApp.onPageInit('order-details', function (page) { //订单详情
     console.log('order-details');
     mainView.hideToolbar();
+});
+
+myApp.onPageInit('collection', function (page) { //收藏
+    console.log('collection');
+    $(".collection .center span").on('touchstart', function (e) {
+        var _index = $(this).index();
+        $(this).addClass('active').siblings().removeClass('active');
+        $($(this).closest('.page-content').find('.container .wrap')[_index]).show().siblings().hide();
+    });
+});
+
+
+
+myApp.onPageInit('update-pwd', function (page) { //修改密码
+    console.log('update-pwd');
+    mainView.hideToolbar();
+
+    $(".update-pwd svg.icon").on("touchstart", function () {
+        var _this = $(this);
+        var icon_val = _this.find('use').attr("xlink:href");
+        if (icon_val == "#jd-eye_close") {
+            _this.parent().find('input').attr("type", "text");
+            _this.find('use').attr("xlink:href", "#jd-eye_open");
+        } else if (icon_val == "#jd-eye_open") {
+            _this.parent().find('input').attr("type", "password");
+            _this.find('use').attr("xlink:href", "#jd-eye_close");
+        }
+    });
+
 });
 
 myApp.onPageInit('me', function (page) { //我的个人中心面板
