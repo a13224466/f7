@@ -47,7 +47,6 @@ myApp.onPageInit('index', function (page) { //主page
     });
 
     $$(".search-index").on('touchstart', function (e) {// 首页查询
-        console.log('search-index');
         mainView.router.loadPage('search-main.html');
     });
 
@@ -84,13 +83,13 @@ myApp.onPageInit('index', function (page) { //主page
 });
 
 myApp.onPageInit('profit-give-bean', function (e) {// 盈利送金豆page
+    console.log('profit-give-bean');
 
     new Swiper('.swiper-container.give-bean', {//盈利送金豆幻灯片
         preloadImages: false, // 预加载
         lazyLoading: true, // 延迟加载
         pagination: '.swiper-pagination' //显示页数
     })
-    console.log('profit-give-bean');
 
     $$(document).on('touchstart', '.profit-give-bean .alert-buy-know', function (e) {
         var buyknow = $(this).data('buyknow'); //获取标签上面的值填充到modal
@@ -108,7 +107,39 @@ myApp.onPageInit('profit-give-bean', function (e) {// 盈利送金豆page
             }]
         });
     });
+
+    $('.profit-give-bean .right-icon').on('touchstart', function () {
+        mainView.router.loadPage('search-main.html');
+    });
 });
+
+myApp.onPageInit('silver-bean-glod', function (e) {// 银豆镀金page
+
+    new Swiper('.swiper-container.give-bean', {//银豆镀金幻灯片
+        preloadImages: false, // 预加载
+        lazyLoading: true, // 延迟加载
+        pagination: '.swiper-pagination' //显示页数
+    })
+    console.log('silver-bean-glod');
+
+    $$(document).on('touchstart', '.silver-bean-glod .alert-buy-know', function (e) {
+        var buyknow = $(this).data('buyknow'); //获取标签上面的值填充到modal
+
+        myApp.modal({
+            text:
+            '<div style="word-break: break-all;">'
+            + buyknow
+            + '</div>',
+            buttons: [{
+                text: '我知道了',
+                onClick: function () {
+                    myApp.closeModal('.alert-buy-know');
+                }
+            }]
+        });
+    });
+});
+
 
 myApp.onPageInit('bean-indiana', function (e) {
     console.log('bean-indiana');
@@ -891,6 +922,168 @@ myApp.onPageInit('me-all-order', function (page) { //我的全部订单
     });
 
 });
+
+
+// 夺宝
+myApp.onPageInit('dot-shop-detail', function (e) {
+    console.log('dot-shop-detail');
+
+    mainView.hideToolbar();
+    new Swiper('.dot-shop-detail .swiper-container', {
+        pagination: '.swiper-pagination'
+    })
+
+    $('.add-list').on('touchstart', function (e) {
+        layer.open({
+            type: 1,
+            content: '<div style="display:flex; justify-content: center;align-items: center; height:.4rem; box-sizing: border-box;border-bottom: .01rem solid #ddd;">人次期数选中</div>\
+            <div style="padding: .15rem; height: .65rem;">\
+                <p style="margin:0; font-size: .14rem; color: #999;">参与人数</p>\
+                <div style="margin-top: .1rem; display: flex;justify-content: flex-start;"><span style="width:.22rem; height:.22rem;background: #E6E6E6; font-size: .16rem; color: #999;text-align: center; border-top-left-radius: .5rem;border-bottom-left-radius: .5rem;">-</span><input type="text" value="1" style="color:#000; border: 0;width: .45rem;display: block;background: #E6E6E6;margin: 0 .025rem; text-align: center;"><span style="width:.22rem; height:.22rem;background: #E6E6E6; font-size: .16rem; color: #999;text-align: center;    border-bottom-right-radius: .5rem;border-top-right-radius: .5rem;">+</span></div>\
+            </div>\
+            <div style="height: .5rem; color: #fff; background: #ff5500; font-size: .15rem; line-height: .5rem;text-align: center;">加入清单</div>',
+            anim: 'up',
+            style: 'position:fixed; bottom:0; left:0; width: 100%;border:none;background:#FFF;'
+        });
+    });
+});
+
+myApp.onPageInit('dot-list', function (e) {
+    console.log('dot-list');
+    mainView.hideToolbar();
+
+})
+
+myApp.onPageInit('dot-pay', function (e) {
+    console.log('dot-pay');
+    mainView.hideToolbar();
+
+})
+
+myApp.onPageInit('dot-record', function (e) {
+    console.log('dot-record');
+    mainView.hideToolbar();
+
+    $('.tab_head .item').on('touchstart', function (e) {
+        var _this = $(this),
+            thisIndex = _this.index();
+        _this.addClass('active').siblings().removeClass('active');
+        $('.tab_body .tab').hide();
+        $('.tab_body .tab' + thisIndex).show();
+    });
+})
+
+myApp.onPageInit('dot-ta-record', function (e) {
+    console.log('dot-ta-record');
+    mainView.hideToolbar();
+
+    $('.tab_head .item').on('touchstart', function (e) {
+        var _this = $(this),
+            thisIndex = _this.index();
+        _this.addClass('active').siblings().removeClass('active');
+        $('.tab_body .tab').hide();
+        $('.tab_body .tab' + thisIndex).show();
+    });
+})
+
+myApp.onPageInit('dot-record-detail', function (e) {
+    console.log('dot-record-detail');
+    mainView.hideToolbar();
+
+    $(document).on('touchstart', '.view-num', function (e) {
+        layer.open({
+            title: [
+                'iphone6s 64G移动版（预售）',
+                'display:flex; align-items: center; margin: 0;background: #fff; padding: 0 .15rem; font-size: .14rem;color: #333; height: .41rem;line-height: .41rem;border-bottom: .01rem solid #999;box-sizing: border-box;'
+            ],
+            content: '<div class="wrap" style="padding: .15rem; background: #fff; border-bottom-left-radius: .05rem;border-bottom-right-radius: .05rem;">\
+                          <div style="text-align: left;    font-size: .14rem;color: #666;">夺宝时间：2017-4-19 11:37:00</div>\
+                          <div style="text-align: left;    font-size: .14rem;color: #666;">参与<span>6</span>次，夺宝号码：</div>\
+                          <ul style="margin-top: .05rem;display: flex;flex-wrap: wrap;">\
+                            <li class="color-ff5500 mar-r-10">10000000</li>\
+                            <li class="color-ff5500 mar-r-10">10000000</li>\
+                            <li class="color-ff5500 mar-r-10">10000000</li>\
+                            <li class="color-ff5500 mar-r-10">10000000</li>\
+                            <li class="color-ff5500 mar-r-10">10000000</li>\
+                            <li class="color-ff5500 mar-r-10">10000000</li>\
+                            <li class="color-ff5500 mar-r-10">10000000</li>\
+                            <li class="color-ff5500 mar-r-10">10000000</li>\
+                          </ul>\
+                      </div>'
+        });
+    });
+})
+
+myApp.onPageInit('dot-confirm-address', function (e) {
+    console.log('dot-confirm-address');
+
+    mainView.hideToolbar();
+
+    $('.wrap .confirm').on('touchstart', function (e) {
+        layer.open({
+            content: '<div style="background: #fff;padding: .15rem;border-top-left-radius: .05rem;border-top-right-radius: .05rem;">提交之后不能修改，您确认提交吗？</div>',
+            btn: ['确定', '取消'],
+            yes: function (index) {
+                layer.close(index);
+            }
+        });
+    });
+
+    $('.wrap .other').on('touchstart', function (e) {
+        mainView.router.loadPage('dot-manager-address.html');
+    });
+
+    $('.confirm-button').on('touchstart', function (e) {
+        layer.open({
+            content: '<div style="background: #fff;padding: .15rem;border-top-left-radius: .05rem;border-top-right-radius: .05rem;">确认您已收到奖品？</div>',
+            btn: ['确定', '取消'],
+            yes: function (index) {
+                layer.close(index);
+            }
+        });
+    });
+
+    $('.view-logistics').on('touchstart', function (e) {
+        mainView.router.loadPage('dot-view-logistics.html');
+    });
+
+    $('.delete-log').on('touchstart', function (e) {
+        layer.open({
+            content: '<div style="background: #fff;padding: .15rem;border-top-left-radius: .05rem;border-top-right-radius: .05rem;">确定删除这条记录吗？</div>',
+            btn: ['确定', '取消'],
+            yes: function (index) {
+                layer.close(index);
+            }
+        });
+    });
+
+    $('.shared').on('touchstart', function (e) {
+        mainView.router.loadPage('dot-shared.html');
+    });
+})
+
+myApp.onPageInit('dot-manager-address', function (e) {
+    console.log('dot-manager-address');
+    mainView.hideToolbar();
+
+})
+
+myApp.onPageInit('dot-view-logistics', function (e) {
+    console.log('dot-view-logistics');
+    mainView.hideToolbar();
+
+})
+
+myApp.onPageInit('dot-shared', function (e) {
+    console.log('dot-shared');
+    mainView.hideToolbar();
+
+})
+
+// myApp.onPageInit('*', function (e) {
+//     console.log(e);
+//     mainView.hideToolbar();
+// })
 
 $$(document).on('touchstart', '.me-bank-card2 .back', function (page) { //我的银行卡
     console.log('me-bank-card2');
