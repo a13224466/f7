@@ -1,10 +1,10 @@
 
 @font-face {font-family: "iconfont";
-  src: url('iconfont.eot?t=1490751764046'); /* IE9*/
-  src: url('iconfont.eot?t=1490751764046#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('iconfont.woff?t=1490751764046') format('woff'), /* chrome, firefox */
-  url('iconfont.ttf?t=1490751764046') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('iconfont.svg?t=1490751764046#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.eot?t=1491383179677'); /* IE9*/
+  src: url('iconfont.eot?t=1491383179677#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1491383179677') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1491383179677') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1491383179677#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -37,7 +37,7 @@
 
 .jd-nodata_collection:before { content: "\e679"; }
 
-.jd-tab_collection_se:before { content: "\e67a"; }
+.jd-tab_collection_sel:before { content: "\e67a"; }
 
 .jd-tab_collection_no:before { content: "\e67b"; }
 
