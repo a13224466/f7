@@ -1,0 +1,155 @@
+<div class="pages">
+    <div data-page="dot-index" class="page dot-index">
+        <div class="page-content pad-0">
+            <div class="self-top-navbar">
+                <div class="left">
+                    <a href="#" class="back">
+                        <svg class="icon" aria-hidden="true">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#jd-head_back_black"></use>
+                        </svg>
+                    </a>
+                </div>
+                <div class="center">
+                    金豆夺宝
+                </div>
+                <div class="right">
+                    <svg class="icon" aria-hidden="true">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#jd-my_Setup"></use>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- 幻灯片 -->
+            <div class="swiper-container give-bean tops mar-t-44">
+                <div class="swiper-wrapper">
+                    <foreach name="banner" item="vo">
+                        <div class="swiper-slide"><span>
+                           <a href="<if condition='$vo[linktype] eq 1'>{$vo.link} <else/> {:U('Goods/goodsDetail',array('goods_id'=>$vo['link']))} </if> ">
+                             <img src="{$vo.src}" class="default_banner">
+                           </a>
+                       </span></div>
+                    </foreach>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <!-- 盈利送金豆分类 -->
+            <div class="row no-gutter profit-classify">
+                <foreach name="cat" item="vo">
+                    <div class="col-25">
+                        <a href="{:U('Goods/search_result',array('cid'=>$vo['id']))}" class="classify-item">
+                            <img src="{$vo.image}">
+                            <p>{$vo.mobile_name}</p>
+                        </a>
+                    </div>
+                </foreach>
+                <div class="col-25">
+                    <a href="{:U('Index/category')}" class="classify-item">
+                        <!-- <svg class="icon tab_home_no" aria-hidden="true">
+                            <use xlink:href="#jd-goldhome_More"></use>
+                        </svg> -->
+                        <img src="__PUBLIC__/home/img/goldhome_More.png">
+                        <p>更多分类</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 轮播 -->
+
+            <div class="dot-swiper">
+                <div class="logo"><img src="__PUBLIC__/home/img/icon_notice@2x.png"></div>
+                <div class="wrap">
+                    <div class="swiper-container give-bean">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">恭喜红鸟 2016-12-19 17:44:44 获得千禧之星获得千禧之星获得千禧之星</div>
+                            <div class="swiper-slide">恭喜红鸟 2016-12-19 17:44:44 获得千禧之星获得千禧之星获得千禧之星</div>
+                            <div class="swiper-slide">恭喜红鸟 2016-12-19 17:44:44 获得千禧之星获得千禧之星获得千禧之星</div>
+                            <div class="swiper-slide">恭喜红鸟 2016-12-19 17:44:44 获得千禧之星获得千禧之星获得千禧之星</div>
+                            <div class="swiper-slide">恭喜红鸟 2016-12-19 17:44:44 获得千禧之星获得千禧之星获得千禧之星</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dot-filter row no-gutter">
+                <div class="col-25">人气</div>
+                <div class="col-25">最新</div>
+                <div class="col-25">进度</div>
+                <div class="col-25">总需人数</div>
+            </div>
+
+            <div class="dot-index-items row no-gutter">
+                <div class="col-50 content-item">
+                    <img src="Uploads/App/images/2016-09-09/57d25395a33d4.jpg">
+                    <p class="description">千禧之星 五连金珠</p>
+                    <div class="row progress">
+                        <div class="col-65">
+                            <div class="tips">揭晓进度:12%</div>
+                            <div class="progress-bar">
+                                <div class="item-inner">
+                                    <div data-progress="12" class="progressbar color-orange"><span style="transform: translate3d(-88%, 0px, 0px);"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-35 add-active">
+                            <input type="button" value="参与">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-50 content-item">
+                    <img src="Uploads/App/images/2016-09-09/57d25395a33d4.jpg">
+                    <p class="description">千禧之星 五连金珠</p>
+                    <div class="row progress">
+                        <div class="col-65">
+                            <div class="tips">揭晓进度:12%</div>
+                            <div class="progress-bar">
+                                <div class="item-inner">
+                                    <div data-progress="12" class="progressbar color-orange"><span style="transform: translate3d(-88%, 0px, 0px);"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-35 add-active">
+                            <input type="button" value="参与">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-50 content-item">
+                    <img src="Uploads/App/images/2016-09-09/57d25395a33d4.jpg">
+                    <p class="description">千禧之星 五连金珠</p>
+                    <div class="row progress">
+                        <div class="col-65">
+                            <div class="tips">揭晓进度:12%</div>
+                            <div class="progress-bar">
+                                <div class="item-inner">
+                                    <div data-progress="12" class="progressbar color-orange"><span style="transform: translate3d(-88%, 0px, 0px);"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-35 add-active">
+                            <input type="button" value="参与">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-50 content-item">
+                    <img src="Uploads/App/images/2016-09-09/57d25395a33d4.jpg">
+                    <p class="description">千禧之星 五连金珠</p>
+                    <div class="row progress">
+                        <div class="col-65">
+                            <div class="tips">揭晓进度:12%</div>
+                            <div class="progress-bar">
+                                <div class="item-inner">
+                                    <div data-progress="12" class="progressbar color-orange"><span style="transform: translate3d(-88%, 0px, 0px);"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-35 add-active">
+                            <input type="button" value="参与">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
