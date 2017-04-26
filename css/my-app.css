@@ -7427,3 +7427,107 @@ li {
 .dot-shared .shop-detail div:first-child {
     margin-top: 0
 }
+
+.profit-give-bean .profit-classify .classify-item img,
+.dot-index .profit-classify .classify-item img {
+    margin: 0 auto;
+    display: block;
+    width: .49rem;
+    height: .49rem;
+}
+
+.profit-give-bean .profit-classify p,
+.dot-index .profit-classify p {
+    margin: .1rem 0;
+    text-align: center;
+}
+
+.profit-give-bean .profit-classify,
+.dot-index .profit-classify {
+    background: #fff;
+}
+
+.dot-index .dot-swiper {
+    padding: .15rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    border-top: .01rem solid #eee;
+    background: #fff;
+}
+.dot-index .dot-swiper .logo img {
+    display: block;
+    margin-right: .1rem;
+    width: .2rem;
+    height: .2rem;
+}
+
+.profit-give-bean .give-bean, .dot-index .give-bean {
+    background: #fff;
+}
+
+.dot-index .dot-swiper .swiper-wrapper {
+    display: flex;
+    align-items: center;
+    width: 3.1rem;
+}
+
+.dot-index .dot-swiper .swiper-slide {
+    height: .5rem;
+    line-height: .5rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.dot-index .dot-filter {
+    margin-top: .1rem;
+    box-sizing: border-box;
+    border-bottom: .01rem solid #eee;
+}
+
+.dot-index .dot-filter .col-25 {
+    height: .45rem;
+    line-height: .45rem;
+    text-align: center;
+    background: #fff;
+}
+
+.dot-index-items {
+    background: #fff;
+}
+.item-content-main .content-item, .dot-index-items .content-item {
+    padding: .15rem;
+    box-sizing: border-box;
+    border-right: .01rem solid #eee;
+    border-bottom: .01rem solid #eee;
+}
+.item-content-main .content-item img, .dot-index-items .content-item img {
+    width: 100%;
+    height: 1.57rem;
+}
+.item-content-main .content-item p, .dot-index-items .content-item p {
+    margin: 0;
+    font-size: .13rem;
+    color: #333;
+}
+.content-item .description {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.item-content-main .progress, .dot-index-items .progress {
+    margin-top: .13rem;
+}
+.content-item .progress .tips {
+    font-size: .12rem;
+    color: #999;
+}
+.content-item .progress .progress-bar {
+    width: .78rem;
+}
+.content-item .progressbar, .progressbar-infinite {
+    height: .05rem;
+}

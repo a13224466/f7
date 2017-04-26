@@ -20,44 +20,77 @@
             </div>
 
             <!-- 幻灯片 -->
-            <div class="swiper-container give-bean tops mar-t-44">
+            <div class="swiper-container give-bean tops">
                 <div class="swiper-wrapper">
-                    <foreach name="banner" item="vo">
-                        <div class="swiper-slide"><span>
-                           <a href="<if condition='$vo[linktype] eq 1'>{$vo.link} <else/> {:U('Goods/goodsDetail',array('goods_id'=>$vo['link']))} </if> ">
-                             <img src="{$vo.src}" class="default_banner">
+                    <div class="swiper-slide">
+                        <span>
+                           <a href="./">
+                             <img src="./img/index-demo.png" class="default_banner" style="
+    display: block;
+">
                            </a>
-                       </span></div>
-                    </foreach>
+                        </span>
+                    </div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
-
             <!-- 盈利送金豆分类 -->
             <div class="row no-gutter profit-classify">
-                <foreach name="cat" item="vo">
-                    <div class="col-25">
-                        <a href="{:U('Goods/search_result',array('cid'=>$vo['id']))}" class="classify-item">
-                            <img src="{$vo.image}">
-                            <p>{$vo.mobile_name}</p>
-                        </a>
-                    </div>
-                </foreach>
                 <div class="col-25">
-                    <a href="{:U('Index/category')}" class="classify-item">
-                        <!-- <svg class="icon tab_home_no" aria-hidden="true">
-                            <use xlink:href="#jd-goldhome_More"></use>
-                        </svg> -->
-                        <img src="__PUBLIC__/home/img/goldhome_More.png">
-                        <p>更多分类</p>
+                    <a href="./dot-classify.html" class="classify-item">
+                        <img src="http://img1.imgtn.bdimg.com/it/u=510491794,1984542249&fm=23&gp=0.jpg">
+                        <p>分类</p>
+                    </a>
+                </div>
+                <div class="col-25">
+                    <a href="./dot-shop-list.html" class="classify-item">
+                        <img src="http://img1.imgtn.bdimg.com/it/u=510491794,1984542249&fm=23&gp=0.jpg">
+                        <p>10元专区</p>
+                    </a>
+                </div>
+                <div class="col-25">
+                    <a href="./dot-shop-list.html" class="classify-item">
+                        <img src="http://img1.imgtn.bdimg.com/it/u=510491794,1984542249&fm=23&gp=0.jpg">
+                        <p>100元专区</p>
+                    </a>
+                </div>
+                <div class="col-25">
+                    <a href="./dot-shop-list.html" class="classify-item">
+                        <img src="http://img1.imgtn.bdimg.com/it/u=510491794,1984542249&fm=23&gp=0.jpg">
+                        <p>1000元专区</p>
+                    </a>
+                </div>
+                <div class="col-25">
+                    <a href="./dot-shared.html" class="classify-item">
+                        <img src="http://img1.imgtn.bdimg.com/it/u=510491794,1984542249&fm=23&gp=0.jpg">
+                        <p>晒单</p>
+                    </a>
+                </div>
+                <div class="col-25">
+                    <a href="./dot-newest-know.html" class="classify-item">
+                        <img src="http://img1.imgtn.bdimg.com/it/u=510491794,1984542249&fm=23&gp=0.jpg">
+                        <p>最新揭晓</p>
+                    </a>
+                </div>
+                <div class="col-25">
+                    <a href="./dot-list.html" class="classify-item">
+                        <img src="http://img1.imgtn.bdimg.com/it/u=510491794,1984542249&fm=23&gp=0.jpg">
+                        <p>清单</p>
+                    </a>
+                </div>
+                <div class="col-25">
+                    <a href="./dot-record.html" class="classify-item">
+                        <img src="http://img1.imgtn.bdimg.com/it/u=510491794,1984542249&fm=23&gp=0.jpg">
+                        <p>我的夺宝</p>
                     </a>
                 </div>
             </div>
 
+
             <!-- 轮播 -->
 
             <div class="dot-swiper">
-                <div class="logo"><img src="__PUBLIC__/home/img/icon_notice@2x.png"></div>
+                <div class="logo"><img src="./img/icon_notice@2x.png"></div>
                 <div class="wrap">
                     <div class="swiper-container give-bean">
                         <div class="swiper-wrapper">
@@ -80,72 +113,80 @@
 
             <div class="dot-index-items row no-gutter">
                 <div class="col-50 content-item">
-                    <img src="Uploads/App/images/2016-09-09/57d25395a33d4.jpg">
-                    <p class="description">千禧之星 五连金珠</p>
-                    <div class="row progress">
-                        <div class="col-65">
-                            <div class="tips">揭晓进度:12%</div>
-                            <div class="progress-bar">
-                                <div class="item-inner">
-                                    <div data-progress="12" class="progressbar color-orange"><span style="transform: translate3d(-88%, 0px, 0px);"></span></div>
+                    <a href="./dot-shop-detail.html">
+                        <img src="http://img0.imgtn.bdimg.com/it/u=3673633480,3539052624&fm=23&gp=0.jpg">
+                        <p class="description">千禧之星 五连金珠</p>
+                        <div class="row progress">
+                            <div class="col-65">
+                                <div class="tips">揭晓进度:12%</div>
+                                <div class="progress-bar">
+                                    <div class="item-inner">
+                                        <div data-progress="12" class="progressbar color-orange"><span style="transform: translate3d(-88%, 0px, 0px);"></span></div>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="col-35 add-active">
+                                <input type="button" value="参与">
+                            </div>
                         </div>
-                        <div class="col-35 add-active">
-                            <input type="button" value="参与">
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-50 content-item">
-                    <img src="Uploads/App/images/2016-09-09/57d25395a33d4.jpg">
-                    <p class="description">千禧之星 五连金珠</p>
-                    <div class="row progress">
-                        <div class="col-65">
-                            <div class="tips">揭晓进度:12%</div>
-                            <div class="progress-bar">
-                                <div class="item-inner">
-                                    <div data-progress="12" class="progressbar color-orange"><span style="transform: translate3d(-88%, 0px, 0px);"></span></div>
+                    <a href="./dot-shop-detail.html">
+                        <img src="http://img0.imgtn.bdimg.com/it/u=3673633480,3539052624&fm=23&gp=0.jpg">
+                        <p class="description">千禧之星 五连金珠</p>
+                        <div class="row progress">
+                            <div class="col-65">
+                                <div class="tips">揭晓进度:12%</div>
+                                <div class="progress-bar">
+                                    <div class="item-inner">
+                                        <div data-progress="12" class="progressbar color-orange"><span style="transform: translate3d(-88%, 0px, 0px);"></span></div>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="col-35 add-active">
+                                <input type="button" value="参与">
+                            </div>
                         </div>
-                        <div class="col-35 add-active">
-                            <input type="button" value="参与">
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-50 content-item">
-                    <img src="Uploads/App/images/2016-09-09/57d25395a33d4.jpg">
-                    <p class="description">千禧之星 五连金珠</p>
-                    <div class="row progress">
-                        <div class="col-65">
-                            <div class="tips">揭晓进度:12%</div>
-                            <div class="progress-bar">
-                                <div class="item-inner">
-                                    <div data-progress="12" class="progressbar color-orange"><span style="transform: translate3d(-88%, 0px, 0px);"></span></div>
+                    <a href="./dot-shop-detail.html">
+                        <img src="http://img0.imgtn.bdimg.com/it/u=3673633480,3539052624&fm=23&gp=0.jpg">
+                        <p class="description">千禧之星 五连金珠</p>
+                        <div class="row progress">
+                            <div class="col-65">
+                                <div class="tips">揭晓进度:12%</div>
+                                <div class="progress-bar">
+                                    <div class="item-inner">
+                                        <div data-progress="12" class="progressbar color-orange"><span style="transform: translate3d(-88%, 0px, 0px);"></span></div>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="col-35 add-active">
+                                <input type="button" value="参与">
+                            </div>
                         </div>
-                        <div class="col-35 add-active">
-                            <input type="button" value="参与">
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-50 content-item">
-                    <img src="Uploads/App/images/2016-09-09/57d25395a33d4.jpg">
-                    <p class="description">千禧之星 五连金珠</p>
-                    <div class="row progress">
-                        <div class="col-65">
-                            <div class="tips">揭晓进度:12%</div>
-                            <div class="progress-bar">
-                                <div class="item-inner">
-                                    <div data-progress="12" class="progressbar color-orange"><span style="transform: translate3d(-88%, 0px, 0px);"></span></div>
+                    <a href="./dot-shop-detail.html">
+                        <img src="http://img0.imgtn.bdimg.com/it/u=3673633480,3539052624&fm=23&gp=0.jpg">
+                        <p class="description">千禧之星 五连金珠</p>
+                        <div class="row progress">
+                            <div class="col-65">
+                                <div class="tips">揭晓进度:12%</div>
+                                <div class="progress-bar">
+                                    <div class="item-inner">
+                                        <div data-progress="12" class="progressbar color-orange"><span style="transform: translate3d(-88%, 0px, 0px);"></span></div>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="col-35 add-active">
+                                <input type="button" value="参与">
+                            </div>
                         </div>
-                        <div class="col-35 add-active">
-                            <input type="button" value="参与">
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
 
